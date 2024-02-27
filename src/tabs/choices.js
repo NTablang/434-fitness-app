@@ -2,7 +2,7 @@ import React from "react";
 
 function ChoicesTab() {
   const [radioChoice, setRadioChoice] = React.useState("");
-  const [dropdownChoice, setDropdownChoice] = React.useState("");
+  const [dropdownChoice, setDropdownChoice] = React.useState("Male");
 
   return (
     <div>
