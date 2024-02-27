@@ -138,3 +138,48 @@ a:hover {
   text-decoration: line-through;
   opacity: 40%;
 }
+
+.profile-cont{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  position: relative;
+}
+
+
+.profile-pic {
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  object-fit: cover;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 4px solid palevioletred;
+  cursor: pointer;
+}
+.profile-pic:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+}
+
+.profile-cap {
+  font-weight: bold;
+}
+
+.profile-info {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: palevioletred;
+  border-radius: 10px;
+  color: white;
+}
+
+.profile-info-close {
+  cursor: pointer;
+}

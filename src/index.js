@@ -5,7 +5,6 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ChakraProvider } from "@chakra-ui/react";
 import theme from "./theme";
-import About from "./about";
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import NavbarProvider from "./components/NavbarProvider";
 import TextTab from "./tabs/text";
