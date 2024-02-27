@@ -11,3 +11,130 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+body {
+  color: black;
+  background: white;
+  font-family: Arial, sans-serif;
+}
+
+.navbar-cont {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: self-start;
+  color: black;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 8vh;
+  padding-top: 10px;
+  z-index: 100;
+  background-color: white;
+  backdrop-filter: blur(100px);
+}
+
+.navbar-cont-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem;
+  border-radius: 0.6em;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: black;
+  font-size: 1em;
+  white-space: nowrap;
+  cursor: pointer;
+  animation: fadeIn 0.5s;
+}
+.navbar-cont-btn:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.main-page {
+  margin-top: calc(8vh + 10px);
+  height: calc(100vh - 8vh - 10px);
+  padding: 1em;
+}
+
+.full-size {
+  width: 100%;
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  animation: fadeIn 0.5s;
+}
+a:hover {
+  text-decoration: none;
+  opacity: 40%;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+.todo-input {
+  padding: 10px;
+  border-radius: 10px;
+  border: 0px;
+  outline: 0px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.todo-input-cont {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.todo-input:focus {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.todo-input-btn {
+  /* unset */
+  padding: 10px;
+  border-radius: 10px;
+  border: 0px;
+  outline: 0px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.todo-list-cont {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo-list-item {
+  padding: 10px;
+  border-radius: 10px;
+  border: 0px;
+  outline: 0px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.todo-list-deleted {
+  text-decoration: line-through;
+  opacity: 40%;
+}

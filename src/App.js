@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { Box, Image, Text, Link, VStack, Button } from '@chakra-ui/react';
+import minion from './minion.png';
+import { useNavigate } from 'react-router-dom';
 
 function App() {
+
+  const navigate = useNavigate();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box className="App" textAlign="center">
+      <VStack className="App-header" spacing={4} align="center" justify="center" minHeight="100vh" bg="gray.800" color="white">
+        <Image src={minion} boxSize="40vmin" alt="logo" />
+        <Text fontSize="xl">
+          433 Project - Fitness App
+        </Text>
+        <Link fontSize="md" href="#" isExternal>
+          Spring 2024
+        </Link>
+        <Button colorScheme="teal" size="lg" onClick={() => {
+          alert('Hello World!');
+          navigate("/about");
+        }}>
+          About Us
+        </Button>
+      </VStack>
+    </Box> 
   );
 }
 
