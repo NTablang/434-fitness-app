@@ -1,35 +1,30 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ChakraProvider } from "@chakra-ui/react";
 import theme from "./theme";
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
-import NavbarProvider from "./components/NavbarProvider";
-import TextTab from "./tabs/text";
-import ChoicesTab from "./tabs/choices";
-import TodoTab from "./tabs/todo";
-import ProfileTab from "./tabs/profile";
-import ColorsTab from "./tabs/colors";
-import LowerRight from "./tabs/lowerright";
+// import NavbarProvider from "./components/providers/NavbarProvider";
+// import TextTab from "./_deprecated/tabs/text";
+// import ChoicesTab from "./_deprecated/tabs/choices";
+// import TodoTab from "./_deprecated/tabs/todo";
+// import ProfileTab from "./_deprecated/tabs/profile";
+// import ColorsTab from "./_deprecated/tabs/colors";
+// import LowerRight from "./_deprecated/tabs/lowerright";
+import AuthProvider from "./components/providers/AuthProvider";
+import UnprotectedRoutes from "./components/routes/UnprotectedRoutes";
+import ProtectedRoutes from "./components/routes/ProtectedRoutes";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <ChakraProvider theme={theme}>
       <Router>
-        <NavbarProvider>
-          <Routes>
-          <Route path="/" element={<TextTab />} />
-            <Route path="/text" element={<TextTab />} />
-            <Route path="/choices" element={<ChoicesTab />} />
-            <Route path="/todo" element={<TodoTab />} />
-            <Route path="/profile" element={<ProfileTab />} />
-            <Route path="/colors" element={<ColorsTab />} />
-            <Route path="/lower-right" element={<LowerRight />} />
-          </Routes>
-        </NavbarProvider>
+        <AuthProvider
+        UnAuthChildren={UnprotectedRoutes}
+        AuthChildren={ProtectedRoutes}
+        />
       </Router>
     </ChakraProvider>
   </React.StrictMode>

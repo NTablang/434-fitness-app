@@ -1,5 +1,5 @@
 import React from "react";
-import Minion from "../minion-self.png";
+import Minion from "../../minion-self.png";
 function ProfileTab() {
   const [open, setOpen] = React.useState(false);
 

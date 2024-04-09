@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { ROUTES } from "../util/constants";
+import { ROUTES } from "../../util/constants";
 
 function NavbarProvider({ children }) {
   const navigate = useNavigate();
