@@ -19,7 +19,7 @@ root.render(
           UnAuthChildren={UnprotectedRoutes}
           AuthChildren={ProtectedRoutes}
         />
-        <NavbarProvider />
+
       </Router>
 
     </ChakraProvider>

@@ -9,32 +9,35 @@ import AddMealScreen from "../screens/protected-screens/meals/AddMealScreen";
 import MealRecommendationScreen from "../screens/protected-screens/meals/MealRecommendationScreen";
 import AddExerciseFields from "../screens/protected-screens/exercise/AddExerciseFields";
 import AddMealFields from "../screens/protected-screens/meals/AddMealFields";
+import NavbarProvider from "../providers/NavbarProvider";
 
 function ProtectedRoutes() {
   return (
-    <Routes>
-      {/* exercise */}
-      <Route path="/" element={<ExerciseScreen />} />
-      <Route path="/exercise" element={<ExerciseScreen />} />
-      {/* meals */}
-      <Route path="/meals" element={<MealScreen />} />
-      {/* profile */}
-      <Route path="/profile" element={<ProfileScreen />} />
+    <NavbarProvider>
+      <Routes>
+        {/* exercise */}
+        <Route path="/" element={<ExerciseScreen />} />
+        <Route path="/exercise" element={<ExerciseScreen />} />
+        {/* meals */}
+        <Route path="/meals" element={<MealScreen />} />
+        {/* profile */}
+        <Route path="/profile" element={<ProfileScreen />} />
 
-      {/* subpages */}
-      <Route path="/exercise/add" element={<AddExerciseScreen />} />
-      <Route path="/exercise/add/fields" element={<AddExerciseFields />} />
-      <Route
-        path="/exercise/recommendation"
-        element={<ExerciseRecommendationScreen />}
-      />
-      <Route path="/meals/add" element={<AddMealScreen />} />
-      <Route path="/meals/add/fields" element={<AddMealFields />} />
-      <Route
-        path="/meals/recommendation"
-        element={<MealRecommendationScreen />}
-      />
-    </Routes>
+        {/* subpages */}
+        <Route path="/exercise/add" element={<AddExerciseScreen />} />
+        <Route path="/exercise/add/fields" element={<AddExerciseFields />} />
+        <Route
+          path="/exercise/recommendation"
+          element={<ExerciseRecommendationScreen />}
+        />
+        <Route path="/meals/add" element={<AddMealScreen />} />
+        <Route path="/meals/add/fields" element={<AddMealFields />} />
+        <Route
+          path="/meals/recommendation"
+          element={<MealRecommendationScreen />}
+        />
+      </Routes>
+    </NavbarProvider>
   );
 }
 

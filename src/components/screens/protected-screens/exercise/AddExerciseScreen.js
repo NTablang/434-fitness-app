@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useToast } from '@chakra-ui/react';
 import {
   Box,
   Heading,
@@ -37,6 +38,7 @@ const AddExerciseScreen = () => {
   const [recoveryTime, setRecoveryTime] = useState('');
   const [recoveryTimeUnit, setRecoveryTimeUnit] = useState('Minutes');
   const navigate = useNavigate();
+  const toast = useToast();
 
   const [sweatAmount, setSweatAmount] = useState('');
   const [feelingDuringWorkout, setFeelingDuringWorkout] = useState('');
@@ -70,19 +72,34 @@ const AddExerciseScreen = () => {
   };
 
   const handleSave = () => {
-    // Handle saving the exercise data based on the selected tab
-    if (selectedTab === 'cardio') {
-      console.log('Cardio exercise saved:', { exerciseName, distance, intensity });
-    } else if (selectedTab === 'weights') {
-      console.log('Weights exercise saved:', {
-        weightExerciseName,
-        sets,
-        repetitions,
-        weight,
-        recoveryTime,
-        recoveryTimeUnit,
-      });
-    }
+    console.log("saving exercise data");
+    // save new exercise in local storage by getting existing exercises and adding new one
+    localStorage.getItem('exercises') || localStorage.setItem('exercises', JSON.stringify([]));
+    const exercises = JSON.parse(localStorage.getItem('exercises'));
+    exercises.push({
+      name: exerciseName,
+      distance,
+      intensity,
+      weight,
+      sets,
+      repetitions,
+      recoveryTime,
+      recoveryTimeUnit,
+      sweatAmount,
+      feelingDuringWorkout,
+      feelingPostWorkout,
+      additionalNotes,
+    });
+    localStorage.setItem('exercises', JSON.stringify(exercises));
+
+    toast({
+      title: 'Profile Saved',
+      description: 'Your exercise has been created successfully.',
+      status: 'success',
+      duration: 5000,
+      isClosable: true,
+    });
+    navigate('/exercise');
   };
 
   return (
