@@ -10,28 +10,30 @@ import {
     useColorModeValue,
 } from '@chakra-ui/react';
 
-const AddExerciseFields = () => {
-    const [selectedFields, setSelectedFields] = useState([]);
+const AddMealFields = () => {
+    const [SelectMealFields, setSelectedFields] = useState([]);
     const navigate = useNavigate();
 
     const fields = [
-        'Sweat Amount',
-        'Feeling During Workout',
-        'Feeling Post-Workout',
-        'Additional Notes',
+        'Carbohydrates (g)',
+        'Protein (g)',
+        'Fat (g)',
+        'Sodium (mg)',
+        'Sugar (g)',
+        'Additional Notes'
     ];
 
     const handleFieldSelect = (field) => {
-        if (selectedFields.includes(field)) {
-            setSelectedFields(selectedFields.filter((f) => f !== field));
+        if (SelectMealFields.includes(field)) {
+            setSelectedFields(SelectMealFields.filter((f) => f !== field));
         } else {
-            setSelectedFields([...selectedFields, field]);
+            setSelectedFields([...SelectMealFields, field]);
         }
     };
 
     const handleAddFields = () => {
-        console.log('Adding selected fields:', selectedFields);
-        navigate('/exercise/add', { state: { selectedFields } });
+        console.log('Adding selected fields:', SelectMealFields);
+        navigate('/meal/add', { state: { selectedFields: SelectMealFields } });
     };
 
     const bgColor = useColorModeValue('white', 'gray.700');
@@ -56,7 +58,7 @@ const AddExerciseFields = () => {
                 {fields.map((field) => (
                     <Checkbox
                         key={field}
-                        isChecked={selectedFields.includes(field)}
+                        isChecked={SelectMealFields.includes(field)}
                         onChange={() => handleFieldSelect(field)}
                         size="lg"
                         colorScheme="blue"
@@ -78,4 +80,4 @@ const AddExerciseFields = () => {
     );
 };
 
-export default AddExerciseFields;
+export default AddMealFields;

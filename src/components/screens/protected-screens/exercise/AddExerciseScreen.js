@@ -23,7 +23,7 @@ import {
   Select,
 } from '@chakra-ui/react';
 
-const AddExercise = () => {
+const AddExerciseScreen = () => {
   const location = useLocation();
   const selectedFields = location.state?.selectedFields || [];
   const [selectedTab, setSelectedTab] = useState('cardio');
@@ -241,4 +241,4 @@ const AddExercise = () => {
   );
 };
 
-export default AddExercise;
+export default AddExerciseScreen;

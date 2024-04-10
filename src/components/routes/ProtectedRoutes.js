@@ -8,6 +8,7 @@ import ExerciseRecommendationScreen from "../screens/protected-screens/exercise/
 import AddMealScreen from "../screens/protected-screens/meals/AddMealScreen";
 import MealRecommendationScreen from "../screens/protected-screens/meals/MealRecommendationScreen";
 import AddExerciseFields from "../screens/protected-screens/exercise/AddExerciseFields";
+import AddMealFields from "../screens/protected-screens/meals/AddMealFields";
 
 function ProtectedRoutes() {
   return (
@@ -28,6 +29,7 @@ function ProtectedRoutes() {
         element={<ExerciseRecommendationScreen />}
       />
       <Route path="/meals/add" element={<AddMealScreen />} />
+      <Route path="/meals/add/fields" element={<AddMealFields />} />
       <Route
         path="/meals/recommendation"
         element={<MealRecommendationScreen />}
