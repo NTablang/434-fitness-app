@@ -51,18 +51,10 @@ const ProfileScreen = () => {
   return (
     <Box maxW="lg" mx="auto" p={4}>
       <Heading as="h2" size="xl" mb={2}>
-        Add Profile
-      </Heading>
-      <Text fontSize="sm" color="gray.500" mb={4}>
-        {new Date().toLocaleDateString('en-US', {
-          weekday: 'long',
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric'
-        })}
-      </Text>
-      <Heading as="h3" size="lg" mb={4}>
         Personal Profile
+      </Heading>
+      <Heading as="h3" size="lg" mb={4} mt={10}>
+        About Me
       </Heading>
       <Stack spacing={4}>
         <FormControl>

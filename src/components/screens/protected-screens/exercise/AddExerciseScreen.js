@@ -93,7 +93,7 @@ const AddExerciseScreen = () => {
     localStorage.setItem('exercises', JSON.stringify(exercises));
 
     toast({
-      title: 'Profile Saved',
+      title: 'Exercise Created',
       description: 'Your exercise has been created successfully.',
       status: 'success',
       duration: 5000,

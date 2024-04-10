@@ -17,57 +17,92 @@ import {
   Flex,
   Link,
   Select,
+  useToast,
 } from '@chakra-ui/react';
 
 const AddMealScreen = () => {
   const location = useLocation();
+  const toast = useToast();
   const selectedFields = location.state?.selectedFields || [];
-  const [selectedTab, setSelectedTab] = useState('cardio');
   const [mealName, setMealName] = useState('');
-  const [distance, setDistance] = useState('');
-  const [intensity, setIntensity] = useState(75);
-  const [weightMealName, setWeightMealName] = useState('');
-  const [sets, setSets] = useState('');
-  const [repetitions, setRepetitions] = useState('');
-  const [weight, setWeight] = useState('');
-  const [recoveryTime, setRecoveryTime] = useState('');
-  const [recoveryTimeUnit, setRecoveryTimeUnit] = useState('Minutes');
-  const navigate = useNavigate();
-
-  const [sweatAmount, setSweatAmount] = useState('');
-  const [feelingDuringWorkout, setFeelingDuringWorkout] = useState('');
-  const [feelingPostWorkout, setFeelingPostWorkout] = useState('');
+  const [calories, setCalories] = useState('');
+  const [tastiness, setTastiness] = useState('');
+  const [preparationTime, setPreparationTime] = useState('');
+  const [preparationTimeUnit, setPreparationTimeUnit] = useState('Minutes');
+  const [carbs, setCarbs] = useState('');
+  const [protein, setProtein] = useState('');
+  const [fat, setFat] = useState('');
+  const [sodium, setSodium] = useState('');
+  const [sugar, setSugar] = useState('');
   const [additionalNotes, setAdditionalNotes] = useState('');
+
+  const navigate = useNavigate();
 
 
   const fieldMapping = {
-
-    'Sweat Amount': {
-      value: sweatAmount,
-      setter: setSweatAmount,
+    'Carbohydrates (g)': {
+      value: carbs,
+      setter: setCarbs,
     },
-    'Feeling During Workout': {
-      value: feelingDuringWorkout,
-      setter: setFeelingDuringWorkout,
+    'Protein (g)': {
+      value: protein,
+      setter: setProtein,
     },
-    'Feeling Post-Workout': {
-      value: feelingPostWorkout,
-      setter: setFeelingPostWorkout,
+    'Fat (g)': {
+      value: fat,
+      setter: setFat,
+    },
+    'Sodium (mg)': {
+      value: sodium,
+      setter: setSodium,
+    },
+    'Sugar (g)': {
+      value: sugar,
+      setter: setSugar,
     },
     'Additional Notes': {
       value: additionalNotes,
       setter: setAdditionalNotes,
     },
+
   };
 
 
   const handleSave = () => {
-    // Handle saving the meal data based on the selected tab
     console.log("saving meal data");
+    // save new meal in local storage by getting existing meals and adding new one
+    localStorage.getItem('meals') || localStorage.setItem('meals', JSON.stringify([]));
+    const meals = JSON.parse(localStorage.getItem('meals'));
+    const newMeal = {
+      name: mealName,
+      calories,
+      tastiness,
+      preparationTime,
+      preparationTimeUnit,
+      carbs,
+      protein,
+      fat,
+      sodium,
+      sugar,
+      additionalNotes,
+    }
+    console.log('Adding new meal:');
+    console.table(newMeal);
+    meals.push(newMeal);
+    localStorage.setItem('meals', JSON.stringify(meals));
+
+    toast({
+      title: 'Meal Created',
+      description: 'Your meal has been created successfully.',
+      status: 'success',
+      duration: 5000,
+      isClosable: true,
+    });
+    navigate('/meals');
   };
 
   return (
-    <Box maxW="lg" mx="auto" p={4}>
+    <Box maxW="lg" mx="auto" p={4} >
       <Heading as="h2" size="xl" mb={2}>
         Add Meal
       </Heading>
@@ -87,8 +122,8 @@ const AddMealScreen = () => {
           <FormLabel>Name of Meal</FormLabel>
           <Input
             type="text"
-            value={weightMealName}
-            onChange={(e) => setWeightMealName(e.target.value)}
+            value={mealName}
+            onChange={(e) => setMealName(e.target.value)}
             placeholder="Chicken Parmesan"
           />
         </FormControl>
@@ -97,8 +132,8 @@ const AddMealScreen = () => {
             <FormLabel>Total Calories</FormLabel>
             <Input
               type="number"
-              value={sets}
-              onChange={(e) => setSets(e.target.value)}
+              value={calories}
+              onChange={(e) => setCalories(e.target.value)}
             />
           </FormControl>
         </Flex>
@@ -106,8 +141,8 @@ const AddMealScreen = () => {
           <FormLabel>Tastiness Rating (1-100)</FormLabel>
           <Input
             type="number"
-            value={weight}
-            onChange={(e) => setWeight(e.target.value)}
+            value={tastiness}
+            onChange={(e) => setTastiness(e.target.value)}
           />
         </FormControl>
         <Flex align="center">
@@ -115,13 +150,13 @@ const AddMealScreen = () => {
             <FormLabel>Preparation Time</FormLabel>
             <Input
               type="number"
-              value={recoveryTime}
-              onChange={(e) => setRecoveryTime(e.target.value)}
+              value={preparationTime}
+              onChange={(e) => setPreparationTime(e.target.value)}
             />
           </FormControl>
           <Select
-            value={recoveryTimeUnit}
-            onChange={(e) => setRecoveryTimeUnit(e.target.value)}
+            value={preparationTimeUnit}
+            onChange={(e) => setPreparationTimeUnit(e.target.value)}
           >
             <option value="Minutes">Minutes</option>
             <option value="Seconds">Seconds</option>
@@ -144,7 +179,7 @@ const AddMealScreen = () => {
           );
         })
       }
-      <Stack direction="row" justify="center" mt={8} borderColor="transparent">
+      < Stack direction="row" justify="center" mt={8} borderColor="transparent" >
         <Link
           fontSize="md"
           color="blue.500"
@@ -155,7 +190,7 @@ const AddMealScreen = () => {
         >
           Add fields
         </Link>
-      </Stack>
+      </Stack >
 
       <Stack direction="row" justify="end" mt={8}>
         <Button colorScheme="blue" onClick={handleSave}>

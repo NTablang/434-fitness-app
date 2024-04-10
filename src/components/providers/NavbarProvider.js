@@ -37,7 +37,7 @@ function NavbarProvider({ children }) {
       >
         {NAVBAR_ROUTES.map((route, index) => {
           const IconComponent = getIconForRoute(route.name);
-          const isActive = location.pathname === route.path;
+          const isActive = location.pathname.includes(route.path.toLowerCase()) || location.pathname.includes(route.name.toLowerCase());
           return (
             <VStack key={index} spacing={2} onClick={() => {
               navigate(route.path);
