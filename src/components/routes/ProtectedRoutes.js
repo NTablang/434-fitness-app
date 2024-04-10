@@ -7,6 +7,7 @@ import AddExerciseScreen from "../screens/protected-screens/exercise/AddExercise
 import ExerciseRecommendationScreen from "../screens/protected-screens/exercise/ExerciseRecommendationScreen";
 import AddMealScreen from "../screens/protected-screens/meals/AddMealScreen";
 import MealRecommendationScreen from "../screens/protected-screens/meals/MealRecommendationScreen";
+import AddExerciseFields from "../screens/protected-screens/exercise/AddExerciseFields";
 
 function ProtectedRoutes() {
   return (
@@ -21,6 +22,7 @@ function ProtectedRoutes() {
 
       {/* subpages */}
       <Route path="/exercise/add" element={<AddExerciseScreen />} />
+      <Route path="/exercise/add/fields" element={<AddExerciseFields />} />
       <Route
         path="/exercise/recommendation"
         element={<ExerciseRecommendationScreen />}

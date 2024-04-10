@@ -5,16 +5,10 @@ import reportWebVitals from "./reportWebVitals";
 import { ChakraProvider } from "@chakra-ui/react";
 import theme from "./theme";
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
-// import NavbarProvider from "./components/providers/NavbarProvider";
-// import TextTab from "./_deprecated/tabs/text";
-// import ChoicesTab from "./_deprecated/tabs/choices";
-// import TodoTab from "./_deprecated/tabs/todo";
-// import ProfileTab from "./_deprecated/tabs/profile";
-// import ColorsTab from "./_deprecated/tabs/colors";
-// import LowerRight from "./_deprecated/tabs/lowerright";
 import AuthProvider from "./components/providers/AuthProvider";
 import UnprotectedRoutes from "./components/routes/UnprotectedRoutes";
 import ProtectedRoutes from "./components/routes/ProtectedRoutes";
+import NavbarProvider from "./components/providers/NavbarProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -22,10 +16,12 @@ root.render(
     <ChakraProvider theme={theme}>
       <Router>
         <AuthProvider
-        UnAuthChildren={UnprotectedRoutes}
-        AuthChildren={ProtectedRoutes}
+          UnAuthChildren={UnprotectedRoutes}
+          AuthChildren={ProtectedRoutes}
         />
+        <NavbarProvider />
       </Router>
+
     </ChakraProvider>
   </React.StrictMode>
 );
