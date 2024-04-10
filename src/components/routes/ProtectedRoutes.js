@@ -25,12 +25,14 @@ function ProtectedRoutes() {
 
         {/* subpages */}
         <Route path="/exercise/add" element={<AddExerciseScreen />} />
+        <Route path="/exercise/recommendations" element={<ExerciseRecommendationScreen />} />
         <Route path="/exercise/add/fields" element={<AddExerciseFields />} />
         <Route
           path="/exercise/recommendation"
           element={<ExerciseRecommendationScreen />}
         />
         <Route path="/meals/add" element={<AddMealScreen />} />
+        <Route path="/meals/recommendations" element={<MealRecommendationScreen />} />
         <Route path="/meals/add/fields" element={<AddMealFields />} />
         <Route
           path="/meals/recommendation"

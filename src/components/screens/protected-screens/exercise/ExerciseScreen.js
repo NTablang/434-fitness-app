@@ -39,7 +39,7 @@ function ExerciseScreen() {
         <Text textAlign="center">No exercises added yet.</Text>
       )}
       <Flex justify="space-around" bottom={"12vh"} position={"absolute"} width="100%">
-        <Button colorScheme="twitter" onClick={() => navigate("/recommendations")}>View Recommendations</Button>
+        <Button colorScheme="twitter" onClick={() => navigate("/exercise/recommendations")}>View Recommendations</Button>
         <Button colorScheme="twitter" onClick={() => navigate("/exercise/add")}>Add Exercise</Button>
       </Flex>
     </VStack>
