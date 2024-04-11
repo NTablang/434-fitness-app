@@ -2,12 +2,16 @@ import React from 'react';
 import { VStack, Heading, Text, Image, Flex, Icon } from '@chakra-ui/react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import { useNavigate } from 'react-router-dom';
+import bench from "../../../../bench.png";
+import squat from "../../../../squat.png";
+import running from "../../../../running.png";
+import pull from "../../../../pull.png";
 
 const recommendations = [
-  { id: 1, name: 'Bench Press', category: 'Weights', targetMuscle: 'Chest', imageUrl: '/images/bench-press.jpg' },
-  { id: 2, name: 'Barbell Squat', category: 'Weights', targetMuscle: 'Quads', imageUrl: '/images/barbell-squat.jpg' },
-  { id: 3, name: 'Long-Distance Run', category: 'Cardio', imageUrl: '/images/long-distance-run.jpg' },
-  { id: 4, name: 'Seated Cable Row', category: 'Weights', targetMuscle: 'Lats', imageUrl: '/images/seated-cable-row.jpg' },
+  { id: 1, name: 'Bench Press', category: 'Weights', targetMuscle: 'Chest', imageUrl: bench },
+  { id: 2, name: 'Barbell Squat', category: 'Weights', targetMuscle: 'Quads', imageUrl: squat },
+  { id: 3, name: 'Long-Distance Run', category: 'Cardio', imageUrl: running },
+  { id: 4, name: 'Seated Cable Row', category: 'Weights', targetMuscle: 'Lats', imageUrl: pull },
 ];
 function ExerciseRecommendationScreen() {
 
