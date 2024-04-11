@@ -14,6 +14,7 @@ import {
   ScaleIcon,
   UserGroupIcon,
 } from "@heroicons/react/24/outline";
+import splashsvg from "../../../../Splash.png";
 
 function OnboardingOneScreen() {
   const navigate = useNavigate();
@@ -63,7 +64,7 @@ function OnboardingOneScreen() {
 
   return (
     <div className="w-screen h-screen overflow-hidden splash-bgg flex flex-col pt-4 items-center gap-10 px-16">
-      <img src={"/Splash.png"} alt="splash" className="w-1/3 h-auto" />
+      <img src={splashsvg} alt="splash" className="w-1/3 h-auto" />
       <div className="text-2xl ">
         <div className="flex items-center flex-col">
           <div className="font-bold font-[Poppins]">

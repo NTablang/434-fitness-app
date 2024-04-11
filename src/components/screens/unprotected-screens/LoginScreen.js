@@ -8,6 +8,8 @@ import {
 import { EnvelopeIcon, LockClosedIcon } from "@heroicons/react/24/outline";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import facebooklogo from "../../../facebook.png";
+import googlelogo from "../../../google.png";
 
 function LoginScreen() {
   const navigate = useNavigate();
@@ -139,7 +141,7 @@ function LoginScreen() {
             onClick={letIn}
           >
             <img
-              src={"/facebook.png"}
+              src={facebooklogo}
               alt="Facebook Icon"
               className="w-8 h-auto"
             />
@@ -148,7 +150,7 @@ function LoginScreen() {
             className="flex px-4 py-8 !rounded-md !bg-transparent border"
             onClick={letIn}
           >
-            <img src={"/google.png"} alt="Google Icon" className="w-8 h-auto" />
+            <img src={googlelogo} alt="Google Icon" className="w-8 h-auto" />
           </Button>
         </div>
         <div className="flex gap-1">

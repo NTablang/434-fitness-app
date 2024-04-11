@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import leanpng from "../../../../Lean.png";
+import runpng from "../../../../Run.png";
+import liftpng from "../../../../Lift.png";
 
 function OnboardingTwoScreen() {
   const location = useLocation();
@@ -32,7 +35,7 @@ function OnboardingTwoScreen() {
           }`}
         >
           <img
-            src={"/Lean.png"}
+            src={leanpng}
             alt="Lean"
             className="w-[50%] h-auto font-[Poppins] rounded-[2rem]"
           />
@@ -52,7 +55,7 @@ function OnboardingTwoScreen() {
           }`}
         >
           <img
-            src={"/Run.png"}
+            src={runpng}
             alt="Lean"
             className="w-[50%] h-auto font-[Poppins] rounded-[2rem]"
           />
@@ -72,7 +75,7 @@ function OnboardingTwoScreen() {
         }`}
       >
         <img
-          src={"/Lift.png"}
+          src={liftpng}
           alt="Lean"
           className="w-[50%] h-auto font-[Poppins] rounded-[2rem]"
         />
