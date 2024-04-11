@@ -11,6 +11,9 @@ function ExerciseScreen() {
       <Box bg="blue.500" color="white" p={4} borderRadius="md">
         <Heading size="md" textAlign="center">This Week's Goal: 5.5/10h</Heading>
       </Box>
+      <Heading as="h3" size="lg" mb={4} ml={4}>
+        Exercise Log
+      </Heading>
       {exercises.length > 0 ? exercises.map((exercise, index) => (
         <Box
           key={index}

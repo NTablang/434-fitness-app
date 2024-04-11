@@ -11,6 +11,9 @@ function MealScreen() {
       <Box bg="blue.500" color="white" p={4} borderRadius="md">
         <Heading size="md" textAlign="center">This Week's Diet Goal: 2100/2200 avg. calories</Heading>
       </Box>
+      <Heading as="h3" size="lg" mb={4} ml={4}>
+        Meal Log
+      </Heading>
       {meals.length > 0 ? meals.map((meal, index) => (
         <Box
           key={index}
