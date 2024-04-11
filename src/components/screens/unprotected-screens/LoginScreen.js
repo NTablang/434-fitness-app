@@ -80,6 +80,8 @@ function LoginScreen() {
               value={formValues.email}
               onChange={handleInputChange}
               onBlur={handleBlur}
+              className="w-full !border-0 !border-b-4 border-gray-900"
+
             />
             {isError.email && (
               <FormErrorMessage>Email is required.</FormErrorMessage>
@@ -97,6 +99,8 @@ function LoginScreen() {
               value={formValues.password}
               onChange={handleInputChange}
               onBlur={handleBlur}
+              className="w-full !border-0 !border-b-4 border-gray-900"
+
             />
             {isError.password && (
               <FormErrorMessage>Password is required.</FormErrorMessage>
@@ -109,6 +113,7 @@ function LoginScreen() {
         <Button
           colorScheme="twitter"
           className="!text-2xl !px-14 !py-8 !rounded-full"
+          
           onClick={() => {
             if (
               formValues.email.trim() === "" ||
