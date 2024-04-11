@@ -169,8 +169,8 @@ function OnboardingOneScreen() {
       <div
         colorScheme="twitter"
         className={`!text-2xl !px-16 !py-4 text-white font-[700] tracking-tight !rounded-full blue-bg cursor-pointer ${Object.values(isError).some((error) => error)
-            ? "opacity-50"
-            : "opacity-100"
+          ? "opacity-50"
+          : "opacity-100"
           } ${Object.values(touched).some((t) => !t)
             ? "!pointer-events-none !opacity-50"
             : ""
