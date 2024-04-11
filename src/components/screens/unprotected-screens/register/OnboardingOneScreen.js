@@ -156,7 +156,7 @@ function OnboardingOneScreen() {
                 className="w-full !border-0 !border-b-4 border-gray-900"
               />
               <div className="violet-bg flex p-4 text-white rounded-lg">
-                FT.
+                IN.
               </div>
             </div>
             {isError.height && (
@@ -168,15 +168,13 @@ function OnboardingOneScreen() {
 
       <div
         colorScheme="twitter"
-        className={`!text-2xl !px-16 !py-4 text-white font-[700] tracking-tight !rounded-full blue-bg cursor-pointer ${
-          Object.values(isError).some((error) => error)
+        className={`!text-2xl !px-16 !py-4 text-white font-[700] tracking-tight !rounded-full blue-bg cursor-pointer ${Object.values(isError).some((error) => error)
             ? "opacity-50"
             : "opacity-100"
-        } ${
-          Object.values(touched).some((t) => !t)
+          } ${Object.values(touched).some((t) => !t)
             ? "!pointer-events-none !opacity-50"
             : ""
-        }`}
+          }`}
         onClick={() => {
           if (
             Object.values(formValues).some((value) => value === "") ||
