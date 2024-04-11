@@ -3,21 +3,15 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import {
   Box,
   Heading,
-  Text,
-  TabPanel,
   FormControl,
   FormLabel,
   Input,
-  Slider,
-  SliderTrack,
-  SliderFilledTrack,
-  SliderThumb,
   Button,
   Stack,
   Flex,
   Link,
-  Select,
   useToast,
+  HStack,
 } from '@chakra-ui/react';
 
 const ProfileScreen = () => {
@@ -29,6 +23,11 @@ const ProfileScreen = () => {
   const [targetWeight, setTargetWeight] = useState(localStorage.getItem('targetWeight') || '');
   const navigate = useNavigate();
   const toast = useToast();
+
+  const handleSignOut = () => {
+    localStorage.clear();
+    navigate("/");
+  };
 
   const handleSave = () => {
     // Handle saving the profile data based on the selected tab
@@ -50,9 +49,14 @@ const ProfileScreen = () => {
 
   return (
     <Box maxW="lg" mx="auto" p={4}>
-      <Heading as="h2" size="xl" mb={2}>
-        Personal Profile
-      </Heading>
+      <HStack justify="space-between" spacing={4}>
+        <Heading as="h2" size="xl" mb={2}>
+          Personal Profile
+        </Heading>
+        <Button colorScheme="red" onClick={handleSignOut}>
+          Sign Out
+        </Button>
+      </HStack>
       <Heading as="h3" size="lg" mb={4} mt={10}>
         About Me
       </Heading>
