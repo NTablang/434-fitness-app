@@ -18,32 +18,39 @@ function ExerciseScreen() {
       <Heading as="h3" size="lg" mb={4} ml={4}>
         Exercise Log
       </Heading>
-      {exercises.length > 0 ? exercises.map((exercise, index) => (
-        <Box
-          key={index}
-          p={6}
-          borderWidth="1px"
-          borderRadius="lg"
-          w="100%"
-          bg="gray.50"
-          boxShadow="sm"
-          _hover={{ boxShadow: "md" }}
-        >
-          <Heading size="md" mb={2}>{exercise.name}</Heading>
-          {exercise.distance && exercise.distance > 0 ? (
-            <>
-              <Text>{exercise.distance} miles</Text>
-              <Text>{exercise.intensity}% intensity</Text>
-            </>
-          ) : (
-            <>
-              <Text>{exercise.weight} lbs</Text>
-              <Text>{exercise.reps} reps</Text>
-            </>
-          )}
-        </Box>
-      )) : (
-        <Text textAlign="center">No exercises added yet.</Text>
+      {exercises.length > 0 ? (
+        exercises.map((exercise, index) => (
+          <Box
+            key={index}
+            p={6}
+            borderWidth="1px"
+            borderRadius="lg"
+            w="100%"
+            bg="gray.50"
+            boxShadow="sm"
+            _hover={{ boxShadow: "md" }}
+          >
+            <Heading size="md" mb={2}>
+              {exercise.name}
+            </Heading>
+            {exercise.distance && exercise.distance > 0 ? (
+              <>
+                <Text>{exercise.distance} miles</Text>
+                <Text>{exercise.intensity}% intensity</Text>
+              </>
+            ) : (
+              <>
+                <Text>{exercise.weight} lbs</Text>
+                <Text>{exercise.reps} reps</Text>
+              </>
+            )}
+          </Box>
+        ))
+      ) : (
+        <div className="w-full h-full flex flex-col items-center mt-16">
+          <img src={noexerciselogo} alt={"symbol"} className="w-72 h-auto" />
+          <Text textAlign="center">No exercises added yet.</Text>
+        </div>
       )}
       <Flex
         justify="space-around"
