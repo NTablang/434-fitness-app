@@ -90,7 +90,8 @@ function RegisterScreen() {
               value={formValues.firstName}
               onChange={handleInputChange}
               onBlur={handleBlur}
-              className="w-full"
+              className="w-full !border-0 !border-b-4 border-gray-900"
+
             />
             {isError.firstName && (
               <FormErrorMessage>First name is required.</FormErrorMessage>
@@ -108,6 +109,8 @@ function RegisterScreen() {
               value={formValues.lastName}
               onChange={handleInputChange}
               onBlur={handleBlur}
+              className="w-full !border-0 !border-b-4 border-gray-900"
+
             />
             {isError.lastName && (
               <FormErrorMessage>Last name is required.</FormErrorMessage>
@@ -125,6 +128,8 @@ function RegisterScreen() {
               value={formValues.email}
               onChange={handleInputChange}
               onBlur={handleBlur}
+              className="w-full !border-0 !border-b-4 border-gray-900"
+
             />
             {isError.email && (
               <FormErrorMessage>Email is required.</FormErrorMessage>
@@ -142,6 +147,8 @@ function RegisterScreen() {
               value={formValues.password}
               onChange={handleInputChange}
               onBlur={handleBlur}
+              className="w-full !border-0 !border-b-4 border-gray-900"
+
             />
             {isError.password && (
               <FormErrorMessage>Password is required.</FormErrorMessage>
@@ -159,9 +166,9 @@ function RegisterScreen() {
       </Checkbox>
 
       <div className="flex flex-col items-center gap-4">
-        <Button
+        <div
           colorScheme="twitter"
-          className="!text-2xl !px-14 !py-8 !rounded-full"
+          className={`!text-2xl !px-16 !py-4 text-white font-[700] tracking-tight !rounded-full blue-bg cursor-pointer `}
           onClick={() => {
             if (
               formValues.firstName.trim() === "" ||
@@ -185,7 +192,8 @@ function RegisterScreen() {
           }}
         >
           Register
-        </Button>
+        </div>
+
         <div>or</div>
         <div className="flex gap-8">
           <Button

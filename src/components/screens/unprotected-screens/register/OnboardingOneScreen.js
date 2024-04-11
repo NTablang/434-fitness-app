@@ -25,12 +25,14 @@ function OnboardingOneScreen() {
     birthDate: "",
     weight: "",
     height: "",
+    targetWeight: "",
   });
   const [touched, setTouched] = useState({
     gender: false,
     birthDate: false,
     weight: false,
     height: false,
+    targetWeight: false,
   });
 
   useEffect(() => {
@@ -82,11 +84,11 @@ function OnboardingOneScreen() {
         <div className="bg-[#f2f2f2] flex items-center px-6 py-4 gap-4 rounded-lg">
           <UserGroupIcon className="w-8 h-8 text-gray-500" />
           <div className="w-full">
-            <FormLabel>Choose Gender</FormLabel>
+            {/* <FormLabel>Choose Gender</FormLabel> */}
             <Select
               _placeholder={{ color: "gray.200" }}
               name="gender"
-              placeholder="..."
+              placeholder="Choose Gender"
               value={formValues.gender}
               onChange={handleInputChange}
               onBlur={handleBlur}
@@ -104,10 +106,10 @@ function OnboardingOneScreen() {
         <div className="bg-[#f2f2f2] flex items-center px-6 py-4 gap-4 rounded-lg">
           <CalendarDaysIcon className="w-8 h-8 text-gray-500" />
           <div className="w-full">
-            <FormLabel>Date of Birth</FormLabel>
             <Input
               name="birthDate"
               type="date"
+              placeholder="Date of Birth"
               value={formValues.birthDate}
               onChange={handleInputChange}
               onBlur={handleBlur}
@@ -122,11 +124,11 @@ function OnboardingOneScreen() {
         <div className="bg-[#f2f2f2] flex items-center px-6 py-4 gap-4 rounded-lg">
           <ScaleIcon className="w-8 h-8 text-gray-500" />
           <div className="w-full">
-            <FormLabel>Your Weight</FormLabel>
             <div className="flex justify-between items-center gap-4">
               <Input
                 name="weight"
                 type="number"
+                placeholder="Your Weight"
                 value={formValues.weight}
                 onChange={handleInputChange}
                 onBlur={handleBlur}
@@ -143,13 +145,36 @@ function OnboardingOneScreen() {
         </div>
 
         <div className="bg-[#f2f2f2] flex items-center px-6 py-4 gap-4 rounded-lg">
+          <ScaleIcon className="w-8 h-8 text-gray-500" />
+          <div className="w-full">
+            <div className="flex justify-between items-center gap-4">
+              <Input
+                name="weight"
+                type="number"
+                placeholder="Target Weight"
+                value={formValues.targetWeight}
+                onChange={handleInputChange}
+                onBlur={handleBlur}
+                className="w-full !border-0 !border-b-4 border-gray-900"
+              />
+              <div className="violet-bg flex p-4 text-white rounded-lg">
+                LB.
+              </div>
+            </div>
+            {isError.weight && (
+              <FormErrorMessage>Target weight is required.</FormErrorMessage>
+            )}
+          </div>
+        </div>
+
+        <div className="bg-[#f2f2f2] flex items-center px-6 py-4 gap-4 rounded-lg">
           <ArrowsUpDownIcon className="w-8 h-8 text-gray-500" />
           <div className="w-full">
-            <FormLabel>Your Height</FormLabel>
             <div className="flex gap-4 justify-between items-center">
               <Input
                 name="height"
                 type="number"
+                placeholder="Your Height"
                 value={formValues.height}
                 onChange={handleInputChange}
                 onBlur={handleBlur}
