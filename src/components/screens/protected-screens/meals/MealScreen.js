@@ -18,23 +18,30 @@ function MealScreen() {
       <Heading as="h3" size="lg" mb={4} ml={4}>
         Meal Log
       </Heading>
-      {meals.length > 0 ? meals.map((meal, index) => (
-        <Box
-          key={index}
-          p={6}
-          borderWidth="1px"
-          borderRadius="lg"
-          w="100%"
-          bg="gray.50"
-          boxShadow="sm"
-          _hover={{ boxShadow: "md" }}
-        >
-          <Heading size="md" mb={2}>{meal.name}</Heading>
-          <Text>{meal.calories} calories</Text>
-          <Text>{meal.tastiness}/100 tastiness score</Text>
-        </Box>
-      )) : (
-        <Text textAlign="center">No meals added yet.</Text>
+      {meals.length > 0 ? (
+        meals.map((meal, index) => (
+          <Box
+            key={index}
+            p={6}
+            borderWidth="1px"
+            borderRadius="lg"
+            w="100%"
+            bg="gray.50"
+            boxShadow="sm"
+            _hover={{ boxShadow: "md" }}
+          >
+            <Heading size="md" mb={2}>
+              {meal.name}
+            </Heading>
+            <Text>{meal.calories} calories</Text>
+            <Text>{meal.tastiness}/100 tastiness score</Text>
+          </Box>
+        ))
+      ) : (
+        <div className="w-full h-full flex flex-col items-center mt-16">
+          <img src={nomealslogo} alt={"symbol"} className="w-72 h-auto" />
+          <Text textAlign="center">No meals added yet.</Text>
+        </div>
       )}
       <Flex
         justify="space-around"
