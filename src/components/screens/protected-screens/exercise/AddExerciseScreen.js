@@ -23,7 +23,7 @@ import {
   Link,
   Select,
 } from "@chakra-ui/react";
-import { XMarkIcon } from "@heroicons/react/24/outline";
+import { CalendarDaysIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
 const AddExerciseScreen = () => {
   const location = useLocation();
@@ -104,24 +104,43 @@ const AddExerciseScreen = () => {
   return (
     <Box maxW="lg" mx="auto" p={4}>
       <div className="flex items-center gap-4">
-        <XMarkIcon className="w-8 h-auto"/>
-        <Heading as="h2" size="xl" mb={2} className="mt-1 ml-28 font-[Poppins] tracking-tight">
+        <XMarkIcon
+          onClick={() => {
+            navigate("/exercise");
+          }}
+          className="w-8 h-auto"
+        />
+        <Heading
+          as="h2"
+          size="xl"
+          mb={2}
+          className="mt-1 ml-28 font-[Poppins] tracking-tight"
+        >
           Add Exercise
         </Heading>
       </div>
-      <Text fontSize="sm" color="gray.500" mb={4}>
-        {new Date().toLocaleDateString("en-US", {
-          weekday: "long",
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        })}
-      </Text>
-      <Tabs isFitted onChange={handleTabChange}>
+      <div className="flex items-center gap-2">
+        <CalendarDaysIcon className="w-6 h-auto opacity-55" />
+        <Text fontSize="md" color="gray.500" mb={4} mt={4}>
+          {new Date().toLocaleDateString("en-US", {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })}
+        </Text>
+      </div>
+      <Tabs
+        isFitted
+        onChange={handleTabChange}
+        border={0}
+        borderColor={"transparent"}
+      >
         <TabList mb={4}>
           <Tab>CARDIO</Tab>
           <Tab>WEIGHTS</Tab>
         </TabList>
+
         <TabPanels>
           <TabPanel>
             <Heading as="h3" size="lg" mb={4}>
