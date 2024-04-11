@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { useToast } from '@chakra-ui/react';
+import React, { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useToast } from "@chakra-ui/react";
 import {
   Box,
   Heading,
@@ -22,50 +22,48 @@ import {
   Flex,
   Link,
   Select,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 
 const AddExerciseScreen = () => {
   const location = useLocation();
   const selectedFields = location.state?.selectedFields || [];
-  const [selectedTab, setSelectedTab] = useState('cardio');
-  const [exerciseName, setExerciseName] = useState('');
-  const [distance, setDistance] = useState('');
+  const [selectedTab, setSelectedTab] = useState("cardio");
+  const [exerciseName, setExerciseName] = useState("");
+  const [distance, setDistance] = useState("");
   const [intensity, setIntensity] = useState(75);
-  const [weightExerciseName, setWeightExerciseName] = useState('');
-  const [sets, setSets] = useState('');
-  const [repetitions, setRepetitions] = useState('');
-  const [weight, setWeight] = useState('');
-  const [recoveryTime, setRecoveryTime] = useState('');
-  const [recoveryTimeUnit, setRecoveryTimeUnit] = useState('Minutes');
+  const [weightExerciseName, setWeightExerciseName] = useState("");
+  const [sets, setSets] = useState("");
+  const [repetitions, setRepetitions] = useState("");
+  const [weight, setWeight] = useState("");
+  const [recoveryTime, setRecoveryTime] = useState("");
+  const [recoveryTimeUnit, setRecoveryTimeUnit] = useState("Minutes");
   const navigate = useNavigate();
   const toast = useToast();
 
-  const [sweatAmount, setSweatAmount] = useState('');
-  const [feelingDuringWorkout, setFeelingDuringWorkout] = useState('');
-  const [feelingPostWorkout, setFeelingPostWorkout] = useState('');
-  const [additionalNotes, setAdditionalNotes] = useState('');
-
+  const [sweatAmount, setSweatAmount] = useState("");
+  const [feelingDuringWorkout, setFeelingDuringWorkout] = useState("");
+  const [feelingPostWorkout, setFeelingPostWorkout] = useState("");
+  const [additionalNotes, setAdditionalNotes] = useState("");
 
   const fieldMapping = {
-
-    'Sweat Amount': {
+    "Sweat Amount": {
       value: sweatAmount,
       setter: setSweatAmount,
     },
-    'Feeling During Workout': {
+    "Feeling During Workout": {
       value: feelingDuringWorkout,
       setter: setFeelingDuringWorkout,
     },
-    'Feeling Post-Workout': {
+    "Feeling Post-Workout": {
       value: feelingPostWorkout,
       setter: setFeelingPostWorkout,
     },
-    'Additional Notes': {
+    "Additional Notes": {
       value: additionalNotes,
       setter: setAdditionalNotes,
     },
   };
-
 
   const handleTabChange = (tab) => {
     setSelectedTab(tab);
@@ -74,8 +72,9 @@ const AddExerciseScreen = () => {
   const handleSave = () => {
     console.log("saving exercise data");
     // save new exercise in local storage by getting existing exercises and adding new one
-    localStorage.getItem('exercises') || localStorage.setItem('exercises', JSON.stringify([]));
-    const exercises = JSON.parse(localStorage.getItem('exercises'));
+    localStorage.getItem("exercises") ||
+      localStorage.setItem("exercises", JSON.stringify([]));
+    const exercises = JSON.parse(localStorage.getItem("exercises"));
     exercises.push({
       name: exerciseName,
       distance,
@@ -90,29 +89,32 @@ const AddExerciseScreen = () => {
       feelingPostWorkout,
       additionalNotes,
     });
-    localStorage.setItem('exercises', JSON.stringify(exercises));
+    localStorage.setItem("exercises", JSON.stringify(exercises));
 
     toast({
-      title: 'Exercise Created',
-      description: 'Your exercise has been created successfully.',
-      status: 'success',
+      title: "Exercise Created",
+      description: "Your exercise has been created successfully.",
+      status: "success",
       duration: 5000,
       isClosable: true,
     });
-    navigate('/exercise');
+    navigate("/exercise");
   };
 
   return (
     <Box maxW="lg" mx="auto" p={4}>
-      <Heading as="h2" size="xl" mb={2}>
-        Add Exercise
-      </Heading>
+      <div className="flex items-center gap-4">
+        <XMarkIcon className="w-8 h-auto"/>
+        <Heading as="h2" size="xl" mb={2} className="mt-1 ml-28 font-[Poppins] tracking-tight">
+          Add Exercise
+        </Heading>
+      </div>
       <Text fontSize="sm" color="gray.500" mb={4}>
-        {new Date().toLocaleDateString('en-US', {
-          weekday: 'long',
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric'
+        {new Date().toLocaleDateString("en-US", {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
         })}
       </Text>
       <Tabs isFitted onChange={handleTabChange}>
@@ -241,9 +243,9 @@ const AddExerciseScreen = () => {
           fontSize="md"
           color="blue.500"
           fontWeight="medium"
-          _hover={{ textDecoration: 'underline' }}
+          _hover={{ textDecoration: "underline" }}
           cursor="pointer"
-          onClick={() => navigate('/exercise/add/fields')}
+          onClick={() => navigate("/exercise/add/fields")}
         >
           Add fields
         </Link>

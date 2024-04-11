@@ -62,6 +62,7 @@ function OnboardingOneScreen() {
     birthDate: touched.birthDate && !formValues.birthDate,
     weight: touched.weight && !formValues.weight,
     height: touched.height && !formValues.height,
+    targetWeight: touched.targetWeight && !formValues.targetWeight,
   };
 
   return (
@@ -149,7 +150,7 @@ function OnboardingOneScreen() {
           <div className="w-full">
             <div className="flex justify-between items-center gap-4">
               <Input
-                name="weight"
+                name="targetWeight"
                 type="number"
                 placeholder="Target Weight"
                 value={formValues.targetWeight}
@@ -161,7 +162,7 @@ function OnboardingOneScreen() {
                 LB.
               </div>
             </div>
-            {isError.weight && (
+            {isError.targetWeight && (
               <FormErrorMessage>Target weight is required.</FormErrorMessage>
             )}
           </div>
