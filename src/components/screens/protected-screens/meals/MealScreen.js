@@ -35,7 +35,6 @@ function MealScreen() {
         </Box>
       )) : (
         <Text textAlign="center">No meals added yet.</Text>
-      </div>
       )}
       <Flex
         justify="space-around"
