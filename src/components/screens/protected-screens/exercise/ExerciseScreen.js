@@ -1,46 +1,71 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Box, Button, Text, VStack, Heading, Flex } from '@chakra-ui/react';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { Box, Button, Text, VStack, Heading, Flex } from "@chakra-ui/react";
+import { CustomButton } from "../../unprotected-screens/SplashScreen";
+import noexerciselogo from "../../../../Noexercise.png";
 
 function ExerciseScreen() {
-  const exercises = JSON.parse(localStorage.getItem('exercises')) || [];
+  const exercises = JSON.parse(localStorage.getItem("exercises")) || [];
   const navigate = useNavigate();
 
   return (
     <VStack spacing={6} align="stretch">
-      <Box bg="blue.500" color="white" p={4} borderRadius="md">
-        <Heading size="md" textAlign="center">This Week's Goal: 5.5/10h</Heading>
+      <Box color="white" p={6} className="blue-bg rounded-b-2xl">
+        <Heading size="md" textAlign="center">
+          This Week's Goal: 5.5/10h
+        </Heading>
       </Box>
-      {exercises.length > 0 ? exercises.map((exercise, index) => (
-        <Box
-          key={index}
-          p={6}
-          borderWidth="1px"
-          borderRadius="lg"
-          w="100%"
-          bg="gray.50"
-          boxShadow="sm"
-          _hover={{ boxShadow: "md" }}
-        >
-          <Heading size="md" mb={2}>{exercise.name}</Heading>
-          {exercise.distance && exercise.distance > 0 ? (
-            <>
-              <Text>{exercise.distance} miles</Text>
-              <Text>{exercise.intensity}% intensity</Text>
-            </>
-          ) : (
-            <>
-              <Text>{exercise.weight} lbs</Text>
-              <Text>{exercise.reps} reps</Text>
-            </>
-          )}
-        </Box>
-      )) : (
-        <Text textAlign="center">No exercises added yet.</Text>
+
+      {exercises.length > 0 ? (
+        exercises.map((exercise, index) => (
+          <Box
+            key={index}
+            p={6}
+            borderWidth="1px"
+            borderRadius="lg"
+            w="100%"
+            bg="gray.50"
+            boxShadow="sm"
+            _hover={{ boxShadow: "md" }}
+          >
+            <Heading size="md" mb={2}>
+              {exercise.name}
+            </Heading>
+            {exercise.distance && exercise.distance > 0 ? (
+              <>
+                <Text>{exercise.distance} miles</Text>
+                <Text>{exercise.intensity}% intensity</Text>
+              </>
+            ) : (
+              <>
+                <Text>{exercise.weight} lbs</Text>
+                <Text>{exercise.reps} reps</Text>
+              </>
+            )}
+          </Box>
+        ))
+      ) : (
+        <div className="w-full h-full flex flex-col items-center mt-16">
+          <img src={noexerciselogo} alt={"symbol"} className="w-72 h-auto" />
+          <Text textAlign="center">No exercises added yet.</Text>
+        </div>
       )}
-      <Flex justify="space-around" bottom={"12vh"} position={"absolute"} width="100%">
-        <Button colorScheme="twitter" onClick={() => navigate("/exercise/recommendations")}>View Recommendations</Button>
-        <Button colorScheme="twitter" onClick={() => navigate("/exercise/add")}>Add Exercise</Button>
+      <Flex
+        justify="space-around"
+        bottom={"12vh"}
+        position={"absolute"}
+        width="100%"
+      >
+        <CustomButton
+          onClick={() => navigate("/exercise/recommendations")}
+          label={"View Recommendations"}
+          className={"!text-base !px-4 !py-3 !rounded-xl"}
+        />
+        <CustomButton
+          onClick={() => navigate("/exercise/add")}
+          label={"Add Exercise"}
+          className={"!text-base !px-4 !py-3 !rounded-xl"}
+        />
       </Flex>
     </VStack>
   );
