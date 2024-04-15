@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 import {
@@ -101,11 +101,60 @@ const AddExerciseScreen = () => {
     navigate("/exercise");
   };
 
+  const handleAddFields = () => {
+    const savedData = {
+      name: exerciseName,
+      distance,
+      intensity,
+      weight,
+      sets,
+      repetitions,
+      recoveryTime,
+      recoveryTimeUnit,
+      sweatAmount: sweatAmount == "" ? null : sweatAmount,
+      feelingDuringWorkout: feelingDuringWorkout == "" ? null : feelingDuringWorkout,
+      feelingPostWorkout: feelingPostWorkout == "" ? null : feelingPostWorkout,
+      additionalNotes: additionalNotes == "" ? null : additionalNotes,
+    };
+    console.log("Saving data:", savedData);
+    localStorage.setItem("savedData", JSON.stringify(savedData));
+
+
+
+    navigate("/exercise/add/fields");
+  }
+
+  useEffect(() => {
+    const savedData = JSON.parse(localStorage.getItem("savedData"));
+    if (savedData) {
+      setExerciseName(savedData.name || exerciseName);
+      setDistance(savedData.distance || distance);
+      setIntensity(savedData.intensity || intensity);
+      setWeightExerciseName(savedData.weightExerciseName || weightExerciseName);
+      setWeight(savedData.weight || weight);
+      setSets(savedData.sets || sets);
+      setRepetitions(savedData.repetitions || repetitions);
+      setRecoveryTime(savedData.recoveryTime || recoveryTime);
+      setRecoveryTimeUnit(savedData.recoveryTimeUnit || recoveryTimeUnit);
+      setSweatAmount(savedData.sweatAmount || sweatAmount);
+      setFeelingDuringWorkout(savedData.feelingDuringWorkout || feelingDuringWorkout);
+      setFeelingPostWorkout(savedData.feelingPostWorkout || feelingPostWorkout);
+      setAdditionalNotes(savedData.additionalNotes || additionalNotes);
+
+      // clear saved data
+      localStorage.removeItem("savedData");
+    }
+  }
+
+  , []);
+
+
   return (
     <Box maxW="lg" mx="auto" p={4}>
       <div className="flex items-center gap-4">
         <XMarkIcon
           onClick={() => {
+            localStorage.removeItem("savedData");
             navigate("/exercise");
           }}
           className="w-8 h-auto"
@@ -266,7 +315,7 @@ const AddExerciseScreen = () => {
           fontWeight="medium"
           _hover={{ textDecoration: "underline" }}
           cursor="pointer"
-          onClick={() => navigate("/exercise/add/fields")}
+          onClick={handleAddFields}
         >
           Add fields
         </Link>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
     Box,
@@ -35,6 +35,49 @@ const AddMealFields = () => {
         console.log('Adding selected fields:', SelectMealFields);
         navigate('/meals/add', { state: { selectedFields: SelectMealFields } });
     };
+
+  useEffect(() => {
+    const savedFields = JSON.parse(localStorage.getItem("savedData"));
+    console.log("Saved fields from add:", savedFields);
+    if (
+      savedFields.carbs ||
+      savedFields.protein ||
+        savedFields.fat ||
+        savedFields.sodium ||
+        savedFields.sugar ||
+        savedFields.additionalNotes
+    ) {
+      
+        console.log("CARBS", savedFields.carbs);
+        console.log("PROTEIN", savedFields.protein);
+        console.log("FAT", savedFields.fat);
+        console.log("SODIUM", savedFields.sodium);
+        console.log("SUGAR", savedFields.sugar);
+        console.log("ADDITIONAL NOTES", savedFields.additionalNotes);
+
+        if (savedFields.carbs) {
+            setSelectedFields([...SelectMealFields, 'Carbohydrates (g)']);
+        }
+        if (savedFields.protein) {
+            setSelectedFields([...SelectMealFields, 'Protein (g)']);
+        }
+        if (savedFields.fat) {
+            setSelectedFields([...SelectMealFields, 'Fat (g)']);
+        }
+        if (savedFields.sodium) {
+            setSelectedFields([...SelectMealFields, 'Sodium (mg)']);
+        }
+        if (savedFields.sugar) {
+            setSelectedFields([...SelectMealFields, 'Sugar (g)']);
+        }
+        if (savedFields.additionalNotes) {
+            setSelectedFields([...SelectMealFields, 'Additional Notes']);
+        }
+        
+        
+    }
+  }, []);
+
 
     const bgColor = useColorModeValue('white', 'gray.700');
     const borderColor = useColorModeValue('gray.200', 'gray.600');
