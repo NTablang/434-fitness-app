@@ -7,6 +7,7 @@ import nomealslogo from "../../../../Nomeal.png";
 function MealScreen() {
   const meals = JSON.parse(localStorage.getItem("meals")) || [];
   const targetWeight = JSON.parse(localStorage.getItem("user"))?.targetWeight;
+  const targetCal = JSON.parse(localStorage.getItem("user"))?.targetCaloriesConsumed;
   const navigate = useNavigate();
   const requiredCalories = targetWeight * 15;
   const totalMealCalories = meals.reduce((acc, meal) => (acc - 0) + (meal.calories - 0), 0);
@@ -15,7 +16,7 @@ function MealScreen() {
     <VStack spacing={6} align="stretch">
       <Box color="white" p={6} className="blue-bg rounded-b-2xl">
         <Heading size="md" textAlign="center">
-          This Week's Diet Goal: {totalMealCalories}/{requiredCalories} avg. calories
+          This Week's Diet Goal: {totalMealCalories}/{targetCal} avg. calories
         </Heading>
       </Box>
       <Heading as="h3" size="lg" mb={4} ml={4}>

@@ -6,6 +6,7 @@ import noexerciselogo from "../../../../Noexercise.png";
 
 function ExerciseScreen() {
   const exercises = JSON.parse(localStorage.getItem("exercises")) || [];
+  const targetCal = JSON.parse(localStorage.getItem("user"))?.targetCaloriesBurned;
   const totalCaloriesBurned = exercises.reduce((acc, exercise) => acc +
     (exercise.distance ? exercise.distance * exercise.intensity : exercise.weight * exercise.repetitions * exercise.sets * 0.1)
     , 0);

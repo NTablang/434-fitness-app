@@ -12,6 +12,7 @@ import {
   Link,
   useToast,
   HStack,
+  Select,
 } from '@chakra-ui/react';
 
 const ProfileScreen = () => {
@@ -63,7 +64,7 @@ const ProfileScreen = () => {
           Sign Out
         </Button>
       </HStack>
-      <Heading as="h3" size="lg" mb={4} mt={10}>
+      <Heading as="h3" size="md" mb={4} mt={10}>
         About Me
       </Heading>
       <Stack spacing={4}>
@@ -109,7 +110,7 @@ const ProfileScreen = () => {
         </FormControl>
       </Stack>
       <Stack spacing={4} mt={8}>
-        <Heading as="h3" size="lg" mb={4}>
+        <Heading as="h3" size="md" mb={1}>
           Goals
         </Heading>
         <Flex>
@@ -123,6 +124,45 @@ const ProfileScreen = () => {
             />
           </FormControl>
         </Flex>
+        <Flex>
+          <FormControl>
+            <FormLabel>Target Weekly Calories Burned</FormLabel>
+            <Input
+              type="number"
+              name="targetCaloriesBurned"
+              value={user.targetCaloriesBurned || ''}
+              onChange={handleInputChange}
+            />
+          </FormControl>
+        </Flex>
+        <Flex>
+          <FormControl>
+            <FormLabel>Target Weekly Calories Consumed</FormLabel>
+            <Input
+              type="number"
+              name="targetCaloriesConsumed"
+              value={user.targetCaloriesConsumed || ''}
+              onChange={handleInputChange}
+            />
+          </FormControl>
+        </Flex>
+        <HStack>
+        <FormLabel>Goal</FormLabel>
+        <Select
+              _placeholder={{ color: "gray.200" }}
+              name="Goal"
+              placeholder="Lean & Tone"
+              //value={formValues.gender}
+              //onChange={handleInputChange}
+              //onBlur={handleBlur}
+              className="w-full !border-0 !border-b-4 border-gray-900"
+            >
+              <option value="loseFat">Lose Fat</option>
+              <option value="bulkMuscle">Bulk Muscle</option>
+        </Select>
+
+        </HStack>
+
       </Stack>
       <Stack direction="row" justify="end" mt={8}>
         <Button colorScheme="blue" onClick={handleSave}>
