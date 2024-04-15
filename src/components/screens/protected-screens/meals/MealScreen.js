@@ -13,7 +13,7 @@ function MealScreen() {
   const totalMealCalories = meals.reduce((acc, meal) => (acc - 0) + (meal.calories - 0), 0);
 
   return (
-    <VStack spacing={6} align="stretch">
+    <VStack spacing={6} align="stretch"  className="max-h-screen overflow-scroll">
       <Box color="white" p={6} className="blue-bg rounded-b-2xl">
         <Heading size="md" textAlign="center">
           This Week's Diet Goal: {totalMealCalories}/{targetCal} avg. calories

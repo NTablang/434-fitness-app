@@ -242,8 +242,8 @@ const AddExerciseScreen = () => {
                 <FormLabel>Name of Exercise</FormLabel>
                 <Input
                   type="text"
-                  value={weightExerciseName}
-                  onChange={(e) => setWeightExerciseName(e.target.value)}
+                  value={exerciseName}
+                  onChange={(e) => setExerciseName(e.target.value)}
                   placeholder="Bench Press"
                 />
               </FormControl>

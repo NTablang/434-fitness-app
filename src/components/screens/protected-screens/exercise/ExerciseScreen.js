@@ -14,7 +14,7 @@ function ExerciseScreen() {
   const navigate = useNavigate();
 
   return (
-    <VStack spacing={6} align="stretch">
+    <VStack spacing={6} align="stretch" className="max-h-screen overflow-scroll">
       <Box color="white" p={6} className="blue-bg rounded-b-2xl">
         <Heading size="md" textAlign="center">
           This Week's Goal: {totalCaloriesBurned}/{2000} calories burned
