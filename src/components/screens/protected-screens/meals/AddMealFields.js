@@ -33,7 +33,7 @@ const AddMealFields = () => {
 
     const handleAddFields = () => {
         console.log('Adding selected fields:', SelectMealFields);
-        navigate('/meal/add', { state: { selectedFields: SelectMealFields } });
+        navigate('/meals/add', { state: { selectedFields: SelectMealFields } });
     };
 
     const bgColor = useColorModeValue('white', 'gray.700');

@@ -17,12 +17,19 @@ import {
 const ProfileScreen = () => {
   const location = useLocation();
   const selectedFields = location.state?.selectedFields || [];
-  const [name, setName] = useState(localStorage.getItem('name') || '');
-  const [height, setHeight] = useState(localStorage.getItem('height') || '');
-  const [weight, setWeight] = useState(localStorage.getItem('weight') || '');
-  const [targetWeight, setTargetWeight] = useState(localStorage.getItem('targetWeight') || '');
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')) || {});
+
+
   const navigate = useNavigate();
   const toast = useToast();
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setUser((prevUser) => ({
+      ...prevUser,
+      [name]: value,
+    }));
+  };
 
   const handleSignOut = () => {
     localStorage.clear();
@@ -32,11 +39,10 @@ const ProfileScreen = () => {
   const handleSave = () => {
     // Handle saving the profile data based on the selected tab
     console.log("saving profile data");
+
     // Save the profile data to local storage
-    localStorage.setItem('name', name);
-    localStorage.setItem('height', height);
-    localStorage.setItem('weight', weight);
-    localStorage.setItem('targetWeight', targetWeight);
+    localStorage.setItem('user', JSON.stringify(user));
+
     // show a success message to the user, using a toast message
     toast({
       title: 'Profile Saved',
@@ -62,21 +68,33 @@ const ProfileScreen = () => {
       </Heading>
       <Stack spacing={4}>
         <FormControl>
-          <FormLabel>Name</FormLabel>
+          <FormLabel>First Name</FormLabel>
           <Input
             type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="John Smith"
+            name="firstName"
+            value={user.firstName || ''}
+            onChange={handleInputChange}
+            placeholder="John"
+          />
+        </FormControl>
+        <FormControl>
+          <FormLabel>Last Name</FormLabel>
+          <Input
+            type="text"
+            name="lastName"
+            value={user.lastName || ''}
+            onChange={handleInputChange}
+            placeholder="Smith"
           />
         </FormControl>
         <Flex>
-          <FormControl mr={4}>
+          <FormControl>
             <FormLabel>Height (inches)</FormLabel>
             <Input
               type="number"
-              value={height}
-              onChange={(e) => setHeight(e.target.value)}
+              name="height"
+              value={user.height || ''}
+              onChange={handleInputChange}
             />
           </FormControl>
         </Flex>
@@ -84,8 +102,9 @@ const ProfileScreen = () => {
           <FormLabel>Weight (pounds)</FormLabel>
           <Input
             type="number"
-            value={weight}
-            onChange={(e) => setWeight(e.target.value)}
+            name="weight"
+            value={user.weight || ''}
+            onChange={handleInputChange}
           />
         </FormControl>
       </Stack>
@@ -94,29 +113,17 @@ const ProfileScreen = () => {
           Goals
         </Heading>
         <Flex>
-          <FormControl mr={4}>
+          <FormControl>
             <FormLabel>Target Weight</FormLabel>
             <Input
               type="number"
-              value={targetWeight}
-              onChange={(e) => setTargetWeight(e.target.value)}
+              name="targetWeight"
+              value={user.targetWeight || ''}
+              onChange={handleInputChange}
             />
           </FormControl>
         </Flex>
       </Stack>
-      <Stack direction="row" justify="center" mt={8} borderColor="transparent">
-        <Link
-          fontSize="md"
-          color="blue.500"
-          fontWeight="medium"
-          _hover={{ textDecoration: 'underline' }}
-          cursor="pointer"
-          onClick={() => navigate('/profiles/add/fields')}
-        >
-          Add fields
-        </Link>
-      </Stack>
-
       <Stack direction="row" justify="end" mt={8}>
         <Button colorScheme="blue" onClick={handleSave}>
           Save
