@@ -6,13 +6,17 @@ import noexerciselogo from "../../../../Noexercise.png";
 
 function ExerciseScreen() {
   const exercises = JSON.parse(localStorage.getItem("exercises")) || [];
+  const totalCaloriesBurned = exercises.reduce((acc, exercise) => acc +
+    (exercise.distance ? exercise.distance * exercise.intensity : exercise.weight * exercise.repetitions * exercise.sets * 0.1)
+    , 0);
+
   const navigate = useNavigate();
 
   return (
     <VStack spacing={6} align="stretch">
       <Box color="white" p={6} className="blue-bg rounded-b-2xl">
         <Heading size="md" textAlign="center">
-          This Week's Goal: 5.5/10h
+          This Week's Goal: {totalCaloriesBurned}/{2000} calories burned
         </Heading>
       </Box>
       <Heading as="h3" size="lg" mb={4} ml={4}>

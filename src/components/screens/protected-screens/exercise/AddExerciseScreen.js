@@ -47,15 +47,15 @@ const AddExerciseScreen = () => {
   const [additionalNotes, setAdditionalNotes] = useState("");
 
   const fieldMapping = {
-    "Sweat Amount": {
+    "Sweat Amount (1-100)": {
       value: sweatAmount,
       setter: setSweatAmount,
     },
-    "Feeling During Workout": {
+    "Feeling During Workout (1-100)": {
       value: feelingDuringWorkout,
       setter: setFeelingDuringWorkout,
     },
-    "Feeling Post-Workout": {
+    "Feeling Post-Workout (1-100)": {
       value: feelingPostWorkout,
       setter: setFeelingPostWorkout,
     },
@@ -222,7 +222,7 @@ const AddExerciseScreen = () => {
                   onChange={(e) => setWeight(e.target.value)}
                 />
               </FormControl>
-              <Flex align="center">
+              <Flex alignItems="flex-end">
                 <FormControl mr={4}>
                   <FormLabel>Recovery Time</FormLabel>
                   <Input
@@ -231,13 +231,15 @@ const AddExerciseScreen = () => {
                     onChange={(e) => setRecoveryTime(e.target.value)}
                   />
                 </FormControl>
-                <Select
-                  value={recoveryTimeUnit}
-                  onChange={(e) => setRecoveryTimeUnit(e.target.value)}
-                >
-                  <option value="Minutes">Minutes</option>
-                  <option value="Seconds">Seconds</option>
-                </Select>
+                <FormControl width="180px">
+                  <Select
+                    value={recoveryTimeUnit}
+                    onChange={(e) => setRecoveryTimeUnit(e.target.value)}
+                  >
+                    <option value="Minutes">Minutes</option>
+                    <option value="Seconds">Seconds</option>
+                  </Select>
+                </FormControl>
               </Flex>
             </Stack>
           </TabPanel>

@@ -15,9 +15,9 @@ const AddExerciseFields = () => {
     const navigate = useNavigate();
 
     const fields = [
-        'Sweat Amount',
-        'Feeling During Workout',
-        'Feeling Post-Workout',
+        'Sweat Amount (1-100)',
+        'Feeling During Workout (1-100)',
+        'Feeling Post-Workout (1-100',
         'Additional Notes',
     ];
 

@@ -18,7 +18,9 @@ import {
   Link,
   Select,
   useToast,
+  Icon
 } from '@chakra-ui/react';
+import { XMarkIcon } from '@heroicons/react/24/outline';
 
 const AddMealScreen = () => {
   const location = useLocation();
@@ -103,9 +105,22 @@ const AddMealScreen = () => {
 
   return (
     <Box maxW="lg" mx="auto" p={4} >
-      <Heading as="h2" size="xl" mb={2}>
-        Add Meal
-      </Heading>
+      <div className="flex items-center gap-4">
+        <XMarkIcon
+          onClick={() => {
+            navigate("/exercise");
+          }}
+          className="w-8 h-auto"
+        />
+        <Heading
+          as="h2"
+          size="xl"
+          mb={2}
+          className="mt-1 ml-28 font-[Poppins] tracking-tight"
+        >
+          Add Meal
+        </Heading>
+      </div>
       <Text fontSize="sm" color="gray.500" mb={4}>
         {new Date().toLocaleDateString('en-US', {
           weekday: 'long',
@@ -145,7 +160,7 @@ const AddMealScreen = () => {
             onChange={(e) => setTastiness(e.target.value)}
           />
         </FormControl>
-        <Flex align="center">
+        <Flex alignItems="flex-end">
           <FormControl mr={4}>
             <FormLabel>Preparation Time</FormLabel>
             <Input
@@ -154,13 +169,15 @@ const AddMealScreen = () => {
               onChange={(e) => setPreparationTime(e.target.value)}
             />
           </FormControl>
-          <Select
-            value={preparationTimeUnit}
-            onChange={(e) => setPreparationTimeUnit(e.target.value)}
-          >
-            <option value="Minutes">Minutes</option>
-            <option value="Seconds">Seconds</option>
-          </Select>
+          <FormControl width="180px">
+            <Select
+              value={preparationTimeUnit}
+              onChange={(e) => setPreparationTimeUnit(e.target.value)}
+            >
+              <option value="Minutes">Minutes</option>
+              <option value="Seconds">Seconds</option>
+            </Select>
+          </FormControl>
         </Flex>
       </Stack>
       {
