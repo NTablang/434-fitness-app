@@ -26,6 +26,8 @@ function OnboardingOneScreen() {
     weight: "",
     height: "",
     targetWeight: "",
+    targetCaloriesBurned: "2000",
+    targetCaloriesConsumed: "27000",
   });
   const [touched, setTouched] = useState({
     gender: false,
