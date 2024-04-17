@@ -17,7 +17,7 @@ function ExerciseScreen() {
     <VStack spacing={6} align="stretch" className="max-h-screen overflow-scroll">
       <Box color="white" p={6} className="blue-bg rounded-b-2xl">
         <Heading size="md" textAlign="center">
-          This Week's Goal: {totalCaloriesBurned}/{2000} calories burned
+          This Week's Goal: {totalCaloriesBurned}/{targetCal} calories burned
         </Heading>
       </Box>
       <Heading as="h3" size="lg" mb={4} ml={4}>
